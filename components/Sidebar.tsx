@@ -19,9 +19,10 @@ function Sidebar() {
     const { data: session, status } = useSession();
     const [playlists, setPlaylists] = useState<any[]>([]);
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
+    
     useEffect(() => {
         if (spotifyApi.getAccessToken()) {
-            spotifyApi.getUserPlaylists().then(data => {
+            spotifyApi.getUserPlaylists().then((data) => {
                 setPlaylists(data.body.items);
             });
         }
@@ -61,7 +62,6 @@ function Sidebar() {
                     <p>Your episodes</p>
                 </button>
                 <hr className='border-t-[0.1px] border-gray-900' />
-
                 {/* playlists */}
                 {playlists.map((playlist) => (
                     <p
